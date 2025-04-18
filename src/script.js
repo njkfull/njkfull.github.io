@@ -517,14 +517,14 @@ function loadData() {
   document.getElementById("audio").innerHTML = "";
   document.getElementById("main-list").innerHTML = "";
 
-  return fetch("https://jsbachvu.github.io/files.html")
+  return fetch("https://njkfull.github.io/files.html")
     .then((respone) => respone.text())
     .then((data) => {
       const songs = data.split("\n");
 
       function getName(musicLink) {
         if (musicLink) {
-          var regex = /([^\/]+)\.mp3/g;
+          var regex = /([^\/]+)\.html/g;
           var results = regex.exec(musicLink);
           if (results && results.length > 0) {
             return results[1];
@@ -533,7 +533,7 @@ function loadData() {
       }
 
       function getLink(path) {
-        return "https://gitlab.com/njkfull/music/-/raw/master/" + path;
+        return "https://njkfull.github.io/" + path;
       }
 
       function buildSongElement(index, name) {
@@ -599,7 +599,7 @@ function loadDataTest() {
   }
 
   function getLink(path) {
-    return "https://gitlab.com/njkfull/music/-/raw/master/" + path;
+    return "https://njkfull.github.io/" + path;
   }
 
   function buildSongElement(index, name) {
