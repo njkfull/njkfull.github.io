@@ -1,1 +1,91 @@
-Hello world!
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Bob's corner</title>
+  <link rel="stylesheet" href="./src/style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div class="container">
+
+  <audio id="audio" preload="none" tabindex="0">
+
+    <source src="https://github.com/jsbachvu/music/raw/master/music/Album - AM/01-Do I Wanna Know.mp3" data-track-number="1" />
+    <source src="https://github.com/jsbachvu/music/raw/master/music/Album - AM/02-R U Mine.mp3" data-track-number="2" />
+    Your browser does not support HTML5 audio.
+  </audio>
+
+  <div class="player">
+
+    <div class="large-toggle-btn">
+      <i class="large-play-btn"><span class="screen-reader-text">Large toggle button</span></i>
+    </div>
+    <!-- /.play-box -->
+
+    <div class="info-box">
+      <div class="track-info-box">
+        <div class="track-title-text"></div>
+        <div class="audio-time">
+          <span class="current-time">00:00</span> /
+          <span class="duration">00:00</span>
+        </div>
+      </div>
+      <!-- /.info-box -->
+
+      <div class="progress-box">
+        <div class="progress-cell">
+          <div class="progress">
+            <div class="progress-buffer"></div>
+            <div class="progress-indicator"></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <!-- /.progress-box -->
+
+    <div class="controls-box">
+      <i class="previous-track-btn disabled"><span class="screen-reader-text">Previous track button</span></i>
+      <i class="next-track-btn"><span class="screen-reader-text">Next track button</span></i>
+    </div>
+    <!-- /.controls-box -->
+
+  </div>
+  <!-- /.player -->
+
+  <div class="play-list" id="main-list">
+
+    <div class="play-list-row" data-track-row="1">
+      <div class="small-toggle-btn">
+        <i class="small-play-btn"><span class="screen-reader-text">Small toggle button</span></i>
+      </div>
+      <div class="track-number">
+        1.
+      </div>
+      <div class="track-title">
+        <a class="playlist-track" href="#" data-play-track="1">01-Do I Wanna Know</a>
+      </div>
+    </div>
+    <div class="play-list-row" data-track-row="2">
+      <div class="small-toggle-btn">
+        <i class="small-play-btn"><span class="screen-reader-text">Small toggle button</span></i>
+      </div>
+      <div class="track-number">
+        2.
+      </div>
+      <div class="track-title">
+        <a class="playlist-track" href="#" data-play-track="2">02-R U Mine</a>
+      </div>
+    </div>
+    
+  </div>
+
+  <div>Bach ^^</a></div>
+</div>
+<!-- partial -->
+  <script  src="./src/script.js"></script>
+
+</body>
+</html>
