@@ -2,6 +2,7 @@ var audioPlayer = function () {
   "use strict";
 
   // Private variables
+  const _MAX_RETRIES = 5;
   var _currentTrack = null;
   var _elements = {
     audio: document.getElementById("audio"),
@@ -20,6 +21,7 @@ var audioPlayer = function () {
   var _progressBarIndicator =
     _elements.progressBar.children[0].children[0].children[1];
   var _trackLoaded = false;
+  var _trackRetried = null;
 
   /**
    * Determines the buffer progress.
@@ -161,6 +163,19 @@ var audioPlayer = function () {
     _elements.audio.addEventListener(
       "error",
       function (e) {
+        function retryTrack() {
+            if (_trackRetried === null) {
+                _trackRetried = _currentTrack*10000;
+            }
+            if (_trackRetried - _currentTrack*10000 < _MAX_RETRIES) {
+                _trackRetried++;
+                _trackLoaded = false;
+                _resetPlayStatus();
+                _setTrack();
+                return true;
+            }
+            return false;
+        }
         switch (e.target.error.code) {
           case e.target.error.MEDIA_ERR_ABORTED:
             alert("You aborted the video playback.");
@@ -174,9 +189,13 @@ var audioPlayer = function () {
             );
             break;
           case e.target.error.MEDIA_ERR_SRC_NOT_SUPPORTED:
-            alert(
-              "The video audio not be loaded, either because the server or network failed or because the format is not supported."
-            );
+            if (retryTrack()) {
+                console.log("Retried track: " + _currentTrack);
+            } else {
+                alert(
+                  "The video audio not be loaded, either because the server or network failed or because the format is not supported."
+                );
+            }
             break;
           default:
             alert("An unknown error occurred.");
