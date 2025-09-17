@@ -174,6 +174,7 @@ var audioPlayer = function () {
                 _setTrack();
                 return true;
             }
+            _trackRetried = null;
             return false;
         }
         switch (e.target.error.code) {
