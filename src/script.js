@@ -191,7 +191,7 @@ var audioPlayer = function () {
             break;
           case e.target.error.MEDIA_ERR_SRC_NOT_SUPPORTED:
             if (retryTrack()) {
-                console.log("Retried track: " + _currentTrack);
+                console.log("Retried track: " + _currentTrack + " - " + _trackRetried);
             } else {
                 alert(
                   "The video audio not be loaded, either because the server or network failed or because the format is not supported."
